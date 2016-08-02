@@ -1,0 +1,18 @@
+  <div>
+<div ng-show="register.show">
+  Passwords did not match, please try again.
+</div>
+
+    <label for="username">Username:</label>
+    <input type="text" ng-model="register.username" id="username" />
+  </div>
+  <div>
+    <label for="password">Password:</label>
+    <input type="password" ng-model="register.password" id="password" />
+  </div>
+  <div>
+    <label for="password2">Re-Enter Password:</label>
+    <input type="password" ng-model="register.password2" id="password2" />
+  </div>
+
+  <button ng-click="register.register()">Register</button>

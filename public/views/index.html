@@ -1,13 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="kickApp">
   <head>
-
-
+    <script src="vendor/angular/angular.min.js"></script>
+    <script src="vendor/angular-route/angular-route.min.js"></script>
+    <script src="assets/client.min.js"></script>
+    <base href="/" />
   </head>
 
-  <body>
-    <h1>Hello World</h1>
+  <body ng-controller="MainController as main">
+    {{main.message}}
+    <h1>Kick Counter - the Game</h1>
+    <div ng-view>
 
+    </div>
 
   </body>
 </html>
