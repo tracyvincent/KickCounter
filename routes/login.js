@@ -13,6 +13,13 @@ router.get('/passportFailure', function(req, res){
   res.sendStatus(401);
 });
 
+router.get('/hello', function(req, res) {
+  if (req.user) {
+    console.log(req.user);
+      res.send(req.user._id);
+  }
+});
+
 router.post('/', passport.authenticate('local', {
   successRedirect: '/login/passportSuccess',
   failureRedirect: '/login/passportFailure'

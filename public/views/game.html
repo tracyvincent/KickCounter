@@ -1,11 +1,35 @@
-<div>
+<div ng-show="game.gameForm">
+  <div>
   <label for="gameName">Game Name</label>
-  <input type="text" ng-model="game.gameName" id="gameName" />
+    <input type="text" ng-model="game.gameSettings.name" id="gameName" />
+  </div>
+  <div>
+    <label for="timed">Timed</label>
+    <input type="radio" name="timed" value="true" ng-model="game.gameSettings.timed" />
+    <label for="untimed">Untimed</label>
+    <input type="radio" name="timed" value="false" ng-model="game.gameSettings.timed" />
+  </div>
+    <button ng-click="game.saveGameSettings()">Save</button>
+  </div>
 </div>
-<div>
-  <label for="timed">Timed</label>
-  <input type="radio" name="gameName" id="gameName" />
-  <label for="untimed">Untimed</label>
-  <input type="radio" name="gameName" id="gameName" />
+
+<div ng-show="game.gameTitle">
+  <h2>{{game.gameSettings.name}}</h2>
 </div>
-<button ng-click="game.saveGameSettings()">Save</button>
+
+<div ng-show="game.timeDisplay">
+	<div>Game Time: <span ng-model="game.seconds">{{game.seconds | secondsToTime}}</span></div>
+</div>
+<div ng-show="game.timeButtons">
+	<input type="button" value="start" ng-click="game.start()" />
+	<input type="button" value="stop" ng-click="game.stop()" />
+</div>
+
+<div ng-show="game.saveGameSet">
+	<input type="button" value="save" ng-click="game.saveGameData()" />
+	<input type="button" value="delete" ng-click="game.deleteGame()" />
+</div>
+
+<div ng-show="game.startNew">
+  <button ng-click="game.startNewGame()">Start New Game</button>
+</div>

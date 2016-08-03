@@ -1,4 +1,4 @@
-angular.module('kickApp').controller('LoginController', ['$http', '$location', function($http, $location){
+app.controller('LoginController', ['$http', '$location', function($http, $location){
   var vm = this;
 
   vm.username = '';
