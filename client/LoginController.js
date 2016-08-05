@@ -24,6 +24,5 @@ app.controller('LoginController', ['$http', '$location', function($http, $locati
 
   function handleFailure(response){
     console.log('Failure', response);
-    $location.path('/failure');
   };
 }]);

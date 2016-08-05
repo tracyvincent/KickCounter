@@ -6,8 +6,11 @@ var session = require('express-session');
 var LocalStrategy = require('passport-local').Strategy;
 var mongoose = require('mongoose');
 var User = require('./models/user');
+var Game = require('./models/game')
 var login = require('./routes/login');
 var register = require('./routes/register');
+var newGame = require('./routes/game');
+var dashboard = require('./routes/dashboard');
 
 var mongoURI = 'mongodb://localhost:27017/kick-counter';
 var MongoDB = mongoose.connect(mongoURI).connection;
@@ -77,6 +80,8 @@ app.use(express.static('public'));
 
 app.use('/login', login);
 app.use('/register', register);
+app.use('/game', newGame);
+app.use('/dashboard', dashboard);
 
 app.use('/api', function(req, res, next){
   if (req.isAuthenticated()) {

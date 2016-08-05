@@ -20,5 +20,10 @@ angular.module('kickApp').config(['$routeProvider', '$locationProvider', functio
     controller: 'GameController',
     controllerAs: 'game'
   })
+  ,when('/continueGame', {
+    templateUrl: 'views/continueGame.html',
+    controller: 'ContinueController',
+    controllerAs: 'continue'
+  })
   $locationProvider.html5Mode(true);
 }]);

@@ -1,1 +1,28 @@
 <a href="/game">Start a New Game</a>
+
+<div class="untimedGames">
+  <h2>Untimed Games in Progress</h2>
+  <ul>
+    <li ng-repeat="untimed in dash.untimedGames track by $index">
+      <h3>{{untimed.gameName}}</h3>
+      Started: {{untimed.gameStart | date: 'shortDate'}}
+      Current Leader: {{untimed.winner.name}} with {{untimed.winner.score}} points
+      Total Kicks: {{untimed.totalScore}}
+      <br><button ng-click="dash.deleteUntimedGame(untimed._id)">Delete Game</button>
+    </li>
+  </ul>
+</div>
+
+<div class="timedGames">
+  <h2>Completed Timed Games</h2>
+  <ul>
+    <li ng-repeat="timed in dash.timedGames track by $index">
+      <h3>{{timed.gameName}}</h3>
+      Played: {{timed.gameStart | date: 'short'}}
+      Game Time: {{timed.gameDuration | secondsToTime}}
+      Winner: {{timed.winner.name}} with {{timed.winner.score}} points
+      Total Kicks: {{timed.totalScore}}
+      <br><button ng-click="dash.deleteTimedGame(timed._id)">Delete Game</button>
+    </li>
+  </ul>
+</div>
