@@ -11,6 +11,7 @@ var login = require('./routes/login');
 var register = require('./routes/register');
 var newGame = require('./routes/game');
 var dashboard = require('./routes/dashboard');
+var update = require('./routes/update');
 
 var mongoURI = 'mongodb://localhost:27017/kick-counter';
 var MongoDB = mongoose.connect(mongoURI).connection;
@@ -82,6 +83,7 @@ app.use('/login', login);
 app.use('/register', register);
 app.use('/game', newGame);
 app.use('/dashboard', dashboard);
+app.use('/update', update);
 
 app.use('/api', function(req, res, next){
   if (req.isAuthenticated()) {

@@ -8,6 +8,7 @@
       Started: {{untimed.gameStart | date: 'shortDate'}}
       Current Leader: {{untimed.winner.name}} with {{untimed.winner.score}} points
       Total Kicks: {{untimed.totalScore}}
+      <br><a href="/continueGame"><button ng-click="dash.continueGame(untimed)">Continue Playing</button></a>
       <br><button ng-click="dash.deleteUntimedGame(untimed._id)">Delete Game</button>
     </li>
   </ul>

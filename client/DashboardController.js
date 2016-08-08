@@ -1,4 +1,4 @@
-app.controller('DashboardController', ['$http', '$location', function($http, $location){
+app.controller('DashboardController', ['$http', '$location', 'DataService', function($http, $location, DataService){
   var vm = this;
 
   vm.untimedGames = [];
@@ -59,4 +59,7 @@ deleteUntimedFail = function(response){
       $http.delete('/dashboard/deleteTimed/' + gameId).then(deleteTimedSuccess, deleteTimedFail);
     }
 
+vm.continueGame = function(gameInfo){
+  DataService.setContinueGame(gameInfo);
+}
 }]);

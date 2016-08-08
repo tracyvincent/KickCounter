@@ -1,14 +1,13 @@
-<div ng-show="game.gameTitle">
-  <h2>{{game.gameSettings.name}}</h2>
+<div ng-init="continue.pageLoad()">
+  <h2>{{continue.gameSettings.gameName}}</h2>
 </div>
-<div ng-show="game.saveGameSet">
-	<input type="button" value="save" ng-click="game.saveGameData()" />
-	<input type="button" value="delete" ng-click="game.deleteGame()" />
+<div>
+	 <a href="/dashboard"><input type="button" value="Save and Return to Dashboard" ng-click="continue.saveGameUpdates()" /></a>
 </div>
-<div ng-repeat="player in game.players track by $index">
+<div ng-repeat="player in continue.gameSettings.players track by $index">
   <div class="playerScore">
     {{player.score}}
   </div>
   <input type="text" ng-model="player.name">
-  <br><button ng-show="game.scoreButton" ng-click="game.scorePoint(player.name)">Score Point</button>
+  <br><button ng-click="continue.scorePoint(player.name)">Score Point</button>
 </div>

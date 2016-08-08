@@ -23,7 +23,7 @@ module.exports = function(grunt) {
       //    mangle: false
       //  },
        files: {
-         'public/assets/client.min.js': ['client/kickApp.module.js', 'client/kickApp.config.js', 'client/MainController.js', 'client/LoginController.js', 'client/RegisterController.js', 'client/DashboardController.js', 'client/GameController.js', 'client/ContinueController.js']
+         'public/assets/client.min.js': ['client/kickApp.module.js', 'client/kickApp.config.js', 'client/MainController.js', 'client/LoginController.js', 'client/RegisterController.js', 'client/DashboardController.js', 'client/GameController.js', 'client/ContinueController.js', 'client/DataService.js']
        }
      }
    }

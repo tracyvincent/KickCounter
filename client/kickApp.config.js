@@ -20,7 +20,7 @@ angular.module('kickApp').config(['$routeProvider', '$locationProvider', functio
     controller: 'GameController',
     controllerAs: 'game'
   })
-  ,when('/continueGame', {
+  .when('/continueGame', {
     templateUrl: 'views/continueGame.html',
     controller: 'ContinueController',
     controllerAs: 'continue'
