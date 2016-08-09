@@ -9,8 +9,10 @@
   </head>
 
   <body ng-controller="MainController as main">
-    {{main.message}}
     <h1>Kick Counter - the Game</h1>
+    <div ng-show="main.dashLink">
+      <a href="/dashboard">Game Dashboard</a>
+    </div>
     <div ng-view>
 
     </div>

@@ -25,5 +25,10 @@ angular.module('kickApp').config(['$routeProvider', '$locationProvider', functio
     controller: 'ContinueController',
     controllerAs: 'continue'
   })
+  .when('/kickReport', {
+    templateUrl: 'views/kickReport.html',
+    controller: 'ReportController',
+    controllerAs: 'report'
+  })
   $locationProvider.html5Mode(true);
 }]);

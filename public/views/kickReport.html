@@ -1,0 +1,12 @@
+<div class="timedGames" id="exportthis">
+  <button ng-click="report.print()">Print Report</button>
+  <h2>Completed Timed Games</h2>
+  <ul>
+    <li ng-repeat="timed in report.timedGames track by $index">
+      <h3>{{timed.gameName}}</h3>
+      Played: {{timed.gameStart | date: 'short'}}
+      Game Time: {{timed.gameDuration | secondsToTime}}
+      Total Kicks: {{timed.totalScore}}
+    </li>
+  </ul>
+</div>
