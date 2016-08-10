@@ -2,11 +2,23 @@ app.controller('ReportController', ['$http', '$location', 'DataService', functio
 
   var vm = this;
 
-  vm.timedGames = DataService.getTimedGames();
-  console.log(vm.timedGames);
+  vm.timedGames = {};
 
   vm.print = function(){
     window.print();
   }
+  timedSuccess = function(response){
+    console.log('timed load success', response);
+    vm.timedGames = response.data;
+  }
+
+  timedFail = function(response){
+    console.log('timed load fail', response);
+  }
+    vm.loadTimed = function(){
+      $http.get('/dashboard/timed').then(timedSuccess, timedFail);
+    }
+
+    vm.loadTimed();
 
 }]);

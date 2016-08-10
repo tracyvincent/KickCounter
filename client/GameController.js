@@ -99,7 +99,7 @@ handleFailure = function(){
       if (vm.players[i].score > vm.gameData.winner.score){
         vm.gameData.winner = vm.players[i];
       } else if(vm.players[i].score == vm.gameData.winner.score){
-        vm.gameData.winner.name = vm.gameData.winner.name + ', and ' + vm.players[i].name;
+        vm.gameData.winner.name += ' and ' + vm.players[i].name;
       }
     }
     vm.gameData.gameDuration = vm.seconds;

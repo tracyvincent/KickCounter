@@ -28,11 +28,13 @@ app.controller('ContinueController', ['$http', '$location', 'DataService', funct
   }
 
   vm.saveGameUpdates = function(){
+    vm.gameSettings.winner.name = '';
+    vm.gameSettings.winner.score = 0;
     for (var i = 0; i < vm.gameSettings.players.length; i++){
       if (vm.gameSettings.players[i].score > vm.gameSettings.winner.score){
         vm.gameSettings.winner = vm.gameSettings.players[i];
       } else if(vm.gameSettings.players[i].score == vm.gameSettings.winner.score){
-        vm.gameSettings.winner.name = vm.gameSettings.winner.name + ', and ' + vm.gameSettings.players[i].name;
+        vm.gameSettings.winner.name += ' and ' + vm.gameSettings.players[i].name;
       }
     }
 
