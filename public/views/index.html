@@ -1,21 +1,29 @@
 <!DOCTYPE html>
 <html ng-app="kickApp">
   <head>
+    <link href="vendor/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet"/>
+    <link href="vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="styles/styles.css" rel="stylesheet" />
+    <script src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="vendor/angular/angular.min.js"></script>
     <script src="vendor/angular-route/angular-route.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-cookies.js"></script>
     <script src="assets/client.min.js"></script>
-    <link href="styles/styles.css" rel="stylesheet" />
     <base href="/" />
   </head>
 
+
   <body ng-controller="MainController as main">
-    <h1>Kick Counter - the Game</h1>
-    <div ng-show="main.dashLink">
-      <a href="/dashboard">Game Dashboard</a>
-    </div>
-    <div ng-view>
+    <div class="wrapper clearfix">
+      <header>
+        <h1>Kick Counter - the Game</h1>
+      </header>
+      <div ng-show="main.dashLink">
+        <a href="/dashboard">Game Dashboard</a>
+      </div>
+      <div ng-view>
 
+      </div>
     </div>
-
   </body>
 </html>

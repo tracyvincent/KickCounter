@@ -16,7 +16,7 @@ router.get('/passportFailure', function(req, res){
 router.get('/hello', function(req, res) {
   if (req.user) {
     console.log(req.user);
-      res.send(req.user._id);
+      res.send(req.user);
   }
 });
 

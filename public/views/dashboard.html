@@ -1,30 +1,45 @@
-<a href="/game">Start a New Game</a>
+<div class="newGame">
+  <a href="/game" class="btn btn-warning btn-lg">Start a New Game</a>
+</div>
 
 <div class="untimedGames">
-  <h2>Untimed Games in Progress</h2>
+  <h3>Untimed Games in Progress</h3>
   <ul>
     <li ng-repeat="untimed in dash.untimedGames track by $index">
-      <h3>{{untimed.gameName}}</h3>
-      Started: {{untimed.gameStart | date: 'shortDate'}}
-      Current Leader: {{untimed.winner.name}} with {{untimed.winner.score}} points
-      Total Kicks: {{untimed.totalScore}}
-      <br><a href="/continueGame"><button ng-click="dash.continueGame(untimed)">Continue Playing</button></a>
-      <br><button ng-click="dash.deleteUntimedGame(untimed._id)">Delete Game</button>
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h4>{{untimed.gameName}}</h4>
+        </div>
+        <div class="panel-body">
+          Started: {{untimed.gameStart | date: 'shortDate'}}<br>
+          Current Leader: <span class="winner">{{untimed.winner.name}}</span> with {{untimed.winner.score}} points<br>
+          Total Kicks: {{untimed.totalScore}}
+          <br>
+          <br><a href="/continueGame"><button ng-click="dash.continueGame(untimed)" class="btn btn-primary">Continue Game</button></a>
+          <button ng-click="dash.deleteUntimedGame(untimed._id)" class="btn btn-danger">Delete Game</button>
+        </div>
+      </div>
     </li>
   </ul>
 </div>
 
 <div class="timedGames">
-  <h2>Completed Timed Games</h2>
-  <a href="/kickReport">View Printable Report</a>
+  <h3>Completed Timed Games</h3>
   <ul>
     <li ng-repeat="timed in dash.timedGames track by $index">
-      <h3>{{timed.gameName}}</h3>
-      Played: {{timed.gameStart | date: 'short'}}
-      Game Time: {{timed.gameDuration | secondsToTime}}
-      Winner: {{timed.winner.name}} with {{timed.winner.score}} points
-      Total Kicks: {{timed.totalScore}}
-      <br><button ng-click="dash.deleteTimedGame(timed._id)">Delete Game</button>
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h4>{{timed.gameName}}</h4>
+        </div>
+        <div class="panel-body">
+          Played: {{timed.gameStart | date: 'short'}}<br>
+          Game Time: {{timed.gameDuration | secondsToTime}}<br>
+          Winner: <span class="winner">{{timed.winner.name}}</span> with {{timed.winner.score}} points<br>
+          Total Kicks: {{timed.totalScore}}
+          <br><button ng-click="dash.deleteTimedGame(timed._id)" class="btn btn-danger">Delete Game</button>
+        </div>
+      </div>
     </li>
   </ul>
+  <a href="/kickReport">View Printable Report</a>
 </div>

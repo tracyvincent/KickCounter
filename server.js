@@ -31,7 +31,7 @@ app.use(session({
   key: 'user',
   resave: true,
   saveUninitialized: false,
-  cookie: {maxAge: 60 * 60 * 1000, secure: false}
+  cookie: {maxAge: 60 * 60 * 1000, secure: false, httmOnly: false}
 }))
 
 app.use(passport.initialize());
@@ -95,6 +95,10 @@ app.use('/api', function(req, res, next){
 
 app.get('/', function(request, response) {
   response.sendFile(path.join(__dirname, 'public/views/index.html'));
+});
+
+app.use(function(request, response) {
+  response.sendFile(path.join(__dirname, 'public/views/index.html'));
 });
 
 var port = process.env.PORT || 3000;

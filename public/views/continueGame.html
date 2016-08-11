@@ -1,13 +1,28 @@
-<div ng-init="continue.pageLoad()">
-  <h2>{{continue.gameSettings.gameName}}</h2>
+<div class="gameTitle" ng-init="continue.pageLoad()">
+  <h2 >{{continue.gameSettings.gameName}}</h2>
 </div>
-<div>
-	 <a href="/dashboard"><input type="button" value="Save and Return to Dashboard" ng-click="continue.saveGameUpdates()" /></a>
+
+
+<div class="gameButtons">
+	 <a href="/dashboard"><input type="button" class="btn btn-primary conSave" value="Save and Return to Dashboard" ng-click="continue.saveGameUpdates()" /></a>
 </div>
+
 <div ng-repeat="player in continue.gameSettings.players track by $index">
-  <div class="playerScore">
-    {{player.score}}
-  </div>
-  <input type="text" ng-model="player.name">
-  <br><button ng-click="continue.scorePoint(player.name)">Score Point</button>
+  <form class="form-horizontal">
+    <div class="col-sm-3 player">
+      <div form-group>
+        <div class="col-sm-11">
+          <input type="text" class="form-control playerName" ng-model="player.name">
+        </div>
+      </div>
+      <br>
+      <br>
+      <div class="playerScore">
+        {{player.score}}
+      </div>
+      <div class="form-group">
+        <button class="btn btn-success btn-score" ng-click="continue.scorePoint($index)">Score Point</button>
+      </div>
+    </div>
+  </form>
 </div>

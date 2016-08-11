@@ -9,14 +9,9 @@ app.controller('ContinueController', ['$http', '$location', 'DataService', funct
     console.log('continue controller', vm.gameSettings);
 }
 
-  vm.scorePoint = function(player){
-    console.log(player);
+  vm.scorePoint = function(i){
     vm.gameSettings.totalScore++;
-    for(var i = 0; i < vm.gameSettings.players.length; i++){
-      if(vm.gameSettings.players[i].name == player){
-        vm.gameSettings.players[i].score++;
-      }
-    }
+      vm.gameSettings.players[i].score++;
   }
 
   vm.handleSuccess = function(response){
@@ -28,11 +23,10 @@ app.controller('ContinueController', ['$http', '$location', 'DataService', funct
   }
 
   vm.saveGameUpdates = function(){
-    vm.gameSettings.winner.name = '';
-    vm.gameSettings.winner.score = 0;
+    vm.gameSettings.winner = {name: '', score: 0};
     for (var i = 0; i < vm.gameSettings.players.length; i++){
       if (vm.gameSettings.players[i].score > vm.gameSettings.winner.score){
-        vm.gameSettings.winner = vm.gameSettings.players[i];
+        vm.gameSettings.winner = angular.copy(vm.gameSettings.players[i]);
       } else if(vm.gameSettings.players[i].score == vm.gameSettings.winner.score){
         vm.gameSettings.winner.name += ' and ' + vm.gameSettings.players[i].name;
       }

@@ -1,4 +1,4 @@
-app.controller('LoginController', ['$http', '$location', function($http, $location){
+app.controller('LoginController', ['$http', '$location', '$cookies', function($http, $location, $cookies){
   var vm = this;
 
   vm.username = '';
@@ -25,4 +25,10 @@ app.controller('LoginController', ['$http', '$location', function($http, $locati
   function handleFailure(response){
     console.log('Failure', response);
   };
+  vm.loggedIn = function(){
+    console.log($cookies);
+    if ($cookies.user){
+      $location.path('/dashboard')
+    }
+  }
 }]);

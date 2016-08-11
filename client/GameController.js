@@ -74,13 +74,8 @@ app.controller('GameController', ['$http', '$location', '$interval', function($h
     vm.gameInit();
   }
 
-  vm.scorePoint = function(player){
-    console.log(player);
-    for (var i = 0; i < vm.players.length; i++){
-      if(vm.players[i].name == player){
-        vm.players[i].score++;
-      }
-    }
+  vm.scorePoint = function(i){
+      vm.players[i].score++;
   }
 
 handleSuccess = function(){
@@ -97,7 +92,7 @@ handleFailure = function(){
     }
     for (var i = 0; i < vm.players.length; i++){
       if (vm.players[i].score > vm.gameData.winner.score){
-        vm.gameData.winner = vm.players[i];
+        vm.gameData.winner = angular.copy(vm.players[i]);
       } else if(vm.players[i].score == vm.gameData.winner.score){
         vm.gameData.winner.name += ' and ' + vm.players[i].name;
       }

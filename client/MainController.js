@@ -1,7 +1,4 @@
-app.controller('MainController', ['$http', 'DataService', function($http, DataService){
+app.controller('MainController', ['$http', function($http){
   var vm = this;
-
-
-
 
 }]);

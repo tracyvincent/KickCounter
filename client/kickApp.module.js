@@ -1,4 +1,4 @@
-var app = angular.module('kickApp', ['ngRoute']);
+var app = angular.module('kickApp', ['ngRoute', 'ngCookies']);
 
 app.filter('secondsToTime', function() {
 

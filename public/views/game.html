@@ -1,57 +1,91 @@
 <div ng-show="game.gameForm">
-  <div>
-  <label for="gameName">Game Name: </label>
-    <input type="text" ng-model="game.gameSettings.name" id="gameName" />
-  </div>
-  <div>
-    Number of Players:
-    <select name="numPlayers" ng-model="game.gameSettings.numPlayers">
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
-      <option value="7">7</option>
-      <option value="8">8</option>
-    </select>
-  </div>
-  <div>
-    <label for="timed">Timed</label>
-    <input type="radio" name="timed" value="true" ng-model="game.gameSettings.timed" />
-    <label for="untimed">Untimed</label>
-    <input type="radio" name="timed" value="false" ng-model="game.gameSettings.timed" />
-  </div>
-  <div>
-    <button ng-click="game.saveGameSettings()">Save</button>
-  </div>
+  <h3>Pick Your Game Settings</h3>
+  <form class="form-horizontal">
+    <div class="form-group">
+      <div>
+        <label for="gameName" class="col-sm-3 control-label">Game Name: </label>
+      </div>
+      <div class="col-sm-4">
+        <input type="text" class="form-control" ng-model="game.gameSettings.name" id="gameName" />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div>
+        <label for="numPlayers" class="col-sm-3 control-label">Number of Players: </label>
+        <div class="col-sm-4">
+          <select name="numPlayers" ng-model="game.gameSettings.numPlayers" class="form-control">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <br>
+
+    <div class="form-group">
+      <label for="timed" class="col-sm-offset-3 radio-inline">Timed</label>
+      <input type="radio" name="timed" value="true" ng-model="game.gameSettings.timed" />
+      <label for="untimed" class="radio-inline">Untimed</label>
+      <input type="radio" name="timed" value="false" ng-model="game.gameSettings.timed" />
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-offset-3 col-sm-10">
+        <button ng-click="game.saveGameSettings()" class="btn btn-primary">Save</button>
+      </div>
+    </div>
+  </form>
 </div>
 
-<div ng-show="game.gameTitle">
+<div ng-show="game.gameTitle" class="gameTitle">
   <h2>{{game.gameSettings.name}}</h2>
 </div>
 
-<div ng-show="game.timeDisplay">
-	<div>Game Time: <span ng-model="game.seconds">{{game.seconds | secondsToTime}}</span></div>
-</div>
-<div ng-show="game.timeButtons">
-	<input type="button" value="start" ng-click="game.start()" />
-	<input type="button" value="stop" ng-click="game.stop()" />
+<div ng-show="game.timeDisplay" class="gameTitle">
+	<h3>Game Time: <span ng-model="game.seconds">{{game.seconds | secondsToTime}}</span></div>
+</h3>
+<div class="gameButtons">
+  <div ng-show="game.timeButtons" class="timeButtons">
+  	<input type="button" class="btn btn-success" value="Start Clock" ng-click="game.start()" />
+  	<input type="button" class="btn btn-danger" value="Stop Clock" ng-click="game.stop()" />
+  </div>
+
+  <div ng-show="game.saveGameSet" class="saveButtons">
+  	<input type="button" class="btn btn-primary" value="Save Game" ng-click="game.saveGameData()" />
+  	<input type="button" class="btn btn-danger" value="Delete Game" ng-click="game.deleteGame()" />
+  </div>
+
+  <div ng-show="game.startNew">
+    <button class="btn btn-primary" ng-click="game.startNewGame()">Start New Game</button>
+  </div>
+  
 </div>
 
-<div ng-show="game.saveGameSet">
-	<input type="button" value="save" ng-click="game.saveGameData()" />
-	<input type="button" value="delete" ng-click="game.deleteGame()" />
-</div>
 
-<div ng-show="game.startNew">
-  <button ng-click="game.startNewGame()">Start New Game</button>
-</div>
 
 <div ng-repeat="player in game.players track by $index">
-  <div class="playerScore">
-    {{player.score}}
-  </div>
-  <input type="text" ng-model="player.name">
-  <br><button ng-show="game.scoreButton" ng-click="game.scorePoint(player.name)">Score Point</button>
+  <form class="form-horizontal">
+    <div class="col-sm-3 player">
+      <div form-group>
+        <div class="col-sm-11">
+          <input type="text" class="form-control playerName" ng-model="player.name">
+        </div>
+      </div>
+      <br>
+      <br>
+      <div class="playerScore">
+        {{player.score}}
+      </div>
+      <div class="form-group">
+        <button ng-show="game.scoreButton" class="btn btn-success btn-score" ng-click="game.scorePoint($index)">Score Point</button>
+      </div>
+    </div>
+  </form>
 </div>
