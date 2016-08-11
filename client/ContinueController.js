@@ -28,7 +28,7 @@ app.controller('ContinueController', ['$http', '$location', 'DataService', funct
       if (vm.gameSettings.players[i].score > vm.gameSettings.winner.score){
         vm.gameSettings.winner = angular.copy(vm.gameSettings.players[i]);
       } else if(vm.gameSettings.players[i].score == vm.gameSettings.winner.score){
-        vm.gameSettings.winner.name += ' and ' + vm.gameSettings.players[i].name;
+        vm.gameSettings.winner.name += ' and ' + vm.gameSettings.players[i].name + ' each ';
       }
     }
 

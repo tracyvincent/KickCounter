@@ -7,7 +7,7 @@ app.controller('DashboardController', ['$http', '$location', 'DataService', func
 
 untimedSuccess = function(response){
   console.log('untimed load success', response.data);
-  vm.untimedGames = response.data;
+  vm.untimedGames = response.data.reverse();
 }
 
 untimedFail = function(response){
@@ -21,7 +21,7 @@ vm.loadUntimed();
 
 timedSuccess = function(response){
   console.log('timed load success', response);
-  vm.timedGames = response.data;
+  vm.timedGames = response.data.reverse();
 }
 
 timedFail = function(response){

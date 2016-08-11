@@ -94,7 +94,7 @@ handleFailure = function(){
       if (vm.players[i].score > vm.gameData.winner.score){
         vm.gameData.winner = angular.copy(vm.players[i]);
       } else if(vm.players[i].score == vm.gameData.winner.score){
-        vm.gameData.winner.name += ' and ' + vm.players[i].name;
+        vm.gameData.winner.name += ' and ' + vm.players[i].name + ' each ';
       }
     }
     vm.gameData.gameDuration = vm.seconds;
