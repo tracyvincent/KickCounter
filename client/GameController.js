@@ -68,7 +68,6 @@ app.controller('GameController', ['$http', '$location', '$interval', function($h
       vm.players.push({name: 'Name Player' + numPlayer, score: 0});
       numPlayer++;
     }
-    console.log(vm.players);
   };
 
 
@@ -83,7 +82,6 @@ app.controller('GameController', ['$http', '$location', '$interval', function($h
     } else {
     vm.timeDisplay = true;
     vm.timeButtons = true;
-    console.log(vm.gameSettings);
     }
   }
 
@@ -123,7 +121,6 @@ handleFailure = function(){
     vm.scoreButton = false;
     vm.playerTitle = true;
     vm.playerInput = false;
-    console.log(vm.gameData);
     //send gameData to database
     $http.post('/game', vm.gameData).then(handleSuccess, handleFailure);
 

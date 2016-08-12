@@ -8,7 +8,6 @@ app.controller('ContinueController', ['$http', '$location', 'DataService', funct
 
   vm.pageLoad = function(){
     vm.gameSettings = DataService.getDataServiceGame();
-    console.log('continue controller', vm.gameSettings);
 }
 
   vm.scorePoint = function(i){
@@ -34,8 +33,6 @@ app.controller('ContinueController', ['$http', '$location', 'DataService', funct
         vm.gameSettings.winner.name += ' and ' + vm.gameSettings.players[i].name + ' each ';
       }
     }
-
-    console.log(vm.gameSettings);
     $http.put('/update/' + vm.gameSettings._id, vm.gameSettings).then(vm.handleSuccess, vm.handleFailure);
   }
 

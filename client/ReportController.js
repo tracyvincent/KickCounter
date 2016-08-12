@@ -8,7 +8,6 @@ app.controller('ReportController', ['$http', '$location', 'DataService', functio
     window.print();
   }
   timedSuccess = function(response){
-    console.log('timed load success', response);
     vm.timedGames = response.data;
   }
 

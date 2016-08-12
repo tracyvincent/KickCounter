@@ -5,7 +5,6 @@ var timedGames = {};
 
 function setContinueGame(gameInfo){
   dataServiceGame = gameInfo;
-  console.log('DataService', dataServiceGame);
 }
 
 timedSuccess = function(response){

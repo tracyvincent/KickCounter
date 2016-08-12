@@ -6,7 +6,6 @@ app.controller('DashboardController', ['$http', '$location', 'DataService', func
   DataService.loadTimed();
 
 untimedSuccess = function(response){
-  console.log('untimed load success', response.data);
   vm.untimedGames = response.data.reverse();
 }
 
@@ -20,7 +19,6 @@ untimedFail = function(response){
 vm.loadUntimed();
 
 timedSuccess = function(response){
-  console.log('timed load success', response);
   vm.timedGames = response.data.reverse();
 }
 
@@ -52,7 +50,6 @@ deleteUntimedFail = function(response){
     vm.deleteTimedGame = function(gameId, i){
       $http.delete('/dashboard/deleteTimed/' + gameId).then(function(response){
         vm.timedGames.splice(i, 1);
-        console.log('delete timed success');
         }, deleteTimedFail);
     }
 
