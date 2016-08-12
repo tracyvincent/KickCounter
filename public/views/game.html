@@ -70,6 +70,7 @@
 
   <div ng-show="game.startNew">
     <button class="btn btn-primary" ng-click="game.startNewGame()">Start New Game</button>
+    <a href="/dashboard"><button class="btn btn-primary">Return to Dashboard</button></a>
   </div>
 
 </div>
@@ -80,8 +81,11 @@
   <form class="form-horizontal">
     <div class="col-sm-3 player">
       <div form-group>
-        <div class="col-sm-11">
+        <div class="col-sm-11" ng-show="game.playerInput">
           <input type="text" class="form-control playerName" ng-model="player.name">
+        </div>
+        <div class="col-sm-11" ng-show="game.playerTitle">
+          <h4>{{player.name}}</h4>
         </div>
       </div>
       <br>

@@ -13,7 +13,7 @@ var newGame = require('./routes/game');
 var dashboard = require('./routes/dashboard');
 var update = require('./routes/update');
 
-var mongoURI = 'mongodb://localhost:27017/kick-counter';
+var mongoURI = 'mongodb://admin:kickcounteradmin@ds153745.mlab.com:53745/kick-counter';
 var MongoDB = mongoose.connect(mongoURI).connection;
 
 MongoDB.on('error', function(err){

@@ -16,7 +16,7 @@
           Total Kicks: {{untimed.totalScore}}
           <br>
           <br><a href="/continueGame"><button ng-click="dash.continueGame(untimed)" class="btn btn-primary">Continue Game</button></a>
-          <button ng-click="dash.deleteUntimedGame(untimed._id)" class="btn btn-danger">Delete Game</button>
+          <button ng-click="dash.deleteUntimedGame(untimed._id, $index)" class="btn btn-danger">Delete Game</button>
         </div>
       </div>
     </li>
@@ -36,7 +36,7 @@
           Game Time: {{timed.gameDuration | secondsToTime}}<br>
           Winner: <span class="winner">{{timed.winner.name}}</span> with {{timed.winner.score}} points<br>
           Total Kicks: {{timed.totalScore}}
-          <br><button ng-click="dash.deleteTimedGame(timed._id)" class="btn btn-danger">Delete Game</button>
+          <br><button ng-click="dash.deleteTimedGame(timed._id, $index)" class="btn btn-danger">Delete Game</button>
         </div>
       </div>
     </li>

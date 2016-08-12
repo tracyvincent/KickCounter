@@ -3,6 +3,8 @@ app.controller('ContinueController', ['$http', '$location', 'DataService', funct
   var vm = this;
 
   vm.gameSettings = {};
+  vm.scoreButton = true;
+
 
   vm.pageLoad = function(){
     vm.gameSettings = DataService.getDataServiceGame();
@@ -23,6 +25,7 @@ app.controller('ContinueController', ['$http', '$location', 'DataService', funct
   }
 
   vm.saveGameUpdates = function(){
+    vm.scoreButton = false;
     vm.gameSettings.winner = {name: '', score: 0};
     for (var i = 0; i < vm.gameSettings.players.length; i++){
       if (vm.gameSettings.players[i].score > vm.gameSettings.winner.score){

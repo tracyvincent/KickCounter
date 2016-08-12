@@ -34,30 +34,26 @@ timedFail = function(response){
   vm.loadTimed();
 
 
-deleteUntimedSuccess = function(response){
-  console.log('delete untimed success');
-  vm.loadUntimed();
-}
-
 deleteUntimedFail = function(response){
   console.log('delete untimed fail');
 }
 
-  vm.deleteUntimedGame = function(gameId){
-    $http.delete('/dashboard/deleteUntimed/' + gameId).then(deleteUntimedSuccess, deleteUntimedFail);
-  }
-
-  deleteTimedSuccess = function(response){
-    console.log('delete timed success');
-    vm.loadTimed();
+  vm.deleteUntimedGame = function(gameId, i){
+    $http.delete('/dashboard/deleteUntimed/' + gameId).then(function(response){
+      vm.untimedGames.splice(i, 1);
+      console.log('delete untimed success');
+    }, deleteUntimedFail);
   }
 
   deleteTimedFail = function(response){
     console.log('delete timed fail');
   }
 
-    vm.deleteTimedGame = function(gameId){
-      $http.delete('/dashboard/deleteTimed/' + gameId).then(deleteTimedSuccess, deleteTimedFail);
+    vm.deleteTimedGame = function(gameId, i){
+      $http.delete('/dashboard/deleteTimed/' + gameId).then(function(response){
+        vm.timedGames.splice(i, 1);
+        console.log('delete timed success');
+        }, deleteTimedFail);
     }
 
     vm.continueGame = function(gameInfo){

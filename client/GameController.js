@@ -17,9 +17,26 @@ app.controller('GameController', ['$http', '$location', '$interval', function($h
     vm.startNew = false;
     vm.players = [];
     vm.scoreButton = false;
+    vm.playerInput = true;
+    vm.playerTitle = false;
   }
 
   vm.gameInit();
+
+  function debounce(func, wait, immediate) {
+  	var timeout;
+  	return function() {
+  		var context = this, args = arguments;
+  		var later = function() {
+  			timeout = null;
+  			if (!immediate) func.apply(context, args);
+  		};
+  		var callNow = immediate && !timeout;
+  		clearTimeout(timeout);
+  		timeout = setTimeout(later, wait);
+  		if (callNow) func.apply(context, args);
+  	};
+  };
 
   vm.start = function(){
     vm.saveGameSet = false;
@@ -74,9 +91,9 @@ app.controller('GameController', ['$http', '$location', '$interval', function($h
     vm.gameInit();
   }
 
-  vm.scorePoint = function(i){
+  vm.scorePoint = debounce(function(i){
       vm.players[i].score++;
-  }
+  }, 200);
 
 handleSuccess = function(){
   console.log('game saved');
@@ -104,6 +121,8 @@ handleFailure = function(){
     vm.saveGameSet = false;
     vm.timeButtons = false;
     vm.scoreButton = false;
+    vm.playerTitle = true;
+    vm.playerInput = false;
     console.log(vm.gameData);
     //send gameData to database
     $http.post('/game', vm.gameData).then(handleSuccess, handleFailure);
