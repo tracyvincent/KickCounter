@@ -1,4 +1,4 @@
-app.controller('ReportController', ['$http', '$location', 'DataService', function($http, $location, DataService){
+app.controller('ReportController', ['$http', 'DataService', function($http, DataService){
 
   var vm = this;
 

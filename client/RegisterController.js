@@ -20,8 +20,9 @@ app.controller('RegisterController', ['$http', '$location', function($http, $loc
       $http.post('/register', sendData).then(handleSuccess, handleFailure);
     }
 
+// logs you in after account creation
       function handleSuccess(response){
-        $location.path('/dashboard');
+        $location.path('/');
       };
 
       function handleFailure(response){
